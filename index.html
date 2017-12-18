@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KPP_lab3</title>
+</head>
+<body>
+
+<script>
+    function onClickFun() {
+        var name = document.getElementById('name');
+        var message = document.getElementById('message');
+        if (name.value.length == 0 || message.value.length == 0)
+            return;
+
+        var b = document.createElement('b');
+        var textName = document.createTextNode(name.value);
+        var textMessage = document.createTextNode(message.value);
+
+        b.appendChild(textName);
+
+        var date = new Date();
+        var strDate = date.toString();
+        document.getElementById("messages").appendChild(document.createTextNode(strDate));
+        document.getElementById("messages").appendChild(document.createTextNode(' '));
+        document.getElementById("messages").appendChild(b);
+        document.getElementById("messages").appendChild(document.createTextNode(': '));
+        document.getElementById("messages").appendChild(textMessage);
+        document.getElementById("messages").appendChild(document.createElement('br'));
+        name.value = '';
+        message.value = '';
+    }
+</script>
+
+<label for="name">Ваше ім'я:</label>
+<input type="text" id="name" value="name"/>
+<label for="message">Повідомлення:</label>
+<input type="text" id="message" value="message"/>
+<input type="submit" id="submitButton" onclick="onClickFun()"/>
+
+<div id="messages">
+
+</div>
+
+<script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+</script>
+</body>
+</html>
